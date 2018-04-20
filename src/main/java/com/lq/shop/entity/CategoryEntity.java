@@ -28,26 +28,26 @@ public class CategoryEntity {
 
     @Id
     @GeneratedValue
-    @Column(columnDefinition = "INT COMMENT '类别Id'")
+    @Column(columnDefinition = "COMMENT '类别Id'")
     private Integer id;
 
-    @Column(columnDefinition = "INT COMMENT 'DECIMAL(20, 2) 父类别id当id=0时说明是根节点,一级类别'")
+    @Column(columnDefinition = "COMMENT '父类别id当id=0时说明是根节点,一级类别'")
     private Integer parentId;
 
-    @Column(length = 50,columnDefinition = "VARCHAR(50) COMMENT '类别名称'")
+    @Column(length = 50,columnDefinition = "COMMENT '类别名称'")
     private String name;
 
-    @Column(length = 1,columnDefinition = "INT(1) COMMENT '类别状态1-正常,2-已废弃'")
+    @Column(length = 1,columnDefinition = "COMMENT '类别状态1-正常,2-已废弃'")
     private Boolean status;
 
-    @Column(length = 4,columnDefinition = "INT(4) COMMENT '排序编号,同类展示顺序,数值相等则自然排序'")
+    @Column(length = 4,columnDefinition = "COMMENT '排序编号,同类展示顺序,数值相等则自然排序'")
     private Integer sortOrder;
 
     @CreatedDate
-    @Column(columnDefinition = "DATETIME COMMENT '创建时间'")
+    @Column(columnDefinition = "COMMENT '创建时间'")
     private Date createTime;
 
     @LastModifiedDate
-    @Column(columnDefinition = "DATETIME COMMENT '更新时间'")
+    @Column(columnDefinition = "COMMENT '更新时间'")
     private Date updateTime;
 }
