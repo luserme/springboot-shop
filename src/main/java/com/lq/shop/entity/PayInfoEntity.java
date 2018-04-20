@@ -31,27 +31,27 @@ public class PayInfoEntity {
     @GeneratedValue
     private int id;
 
-    @Column(columnDefinition = "用户id")
+    @Column(columnDefinition = "INT COMMENT '用户id'")
     private Integer userId;
 
-    @Column(columnDefinition = "订单号")
+    @Column(columnDefinition = "BIGINT COMMENT '订单号'")
     private Long orderNo;
 
-    @Column(length = 10,columnDefinition = "支付平台:1-支付宝,2-微信")
+    @Column(length = 10,columnDefinition = "INT(10) COMMENT '支付平台:1-支付宝,2-微信'")
     private Integer payPlatform;
 
-    @Column(length = 200,columnDefinition = "支付宝支付流水号")
+    @Column(length = 200,columnDefinition = "VARCHAR(200) COMMENT '支付宝支付流水号'")
     private String platformNumber;
 
-    @Column(length = 20,columnDefinition = "支付宝支付状态")
+    @Column(length = 20,columnDefinition = "VARCHAR(20) COMMENT '支付宝支付状态'")
     private String platformStatus;
 
     @CreatedDate
-    @Column(columnDefinition = "创建时间")
+    @Column(columnDefinition = "DATETIME COMMENT '创建时间'")
     private Timestamp createTime;
 
     @LastModifiedDate
-    @Column(columnDefinition = "更新时间")
+    @Column(columnDefinition = "DATETIME COMMENT '更新时间'")
     private Timestamp updateTime;
 
 }
