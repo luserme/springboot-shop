@@ -60,11 +60,16 @@ public class CategoryServiceImpl implements ICategoryService{
         }
 
         CategoryEntity categoryEntity = categoryRepository.findOne(categoryId);
+
+        if(categoryEntity == null){
+            return ServerResult.createByErrorMessage("当前分类不存在");
+        }
+
         categoryEntity.setName(categoryName);
 //
         CategoryEntity saveCategory = categoryRepository.save(categoryEntity);
 //
-        if (saveCategory == null){
+        if (saveCategory != null){
             return ServerResult.createByErrorMessage("更新品类名称成功");
         }
 
