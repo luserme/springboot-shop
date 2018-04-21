@@ -11,10 +11,11 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class MD5Util {
 
-    private static String byteArrayToHexString(byte b[]) {
-        StringBuffer resultSb = new StringBuffer();
-        for (int i = 0; i < b.length; i++)
-            resultSb.append(byteToHexString(b[i]));
+    private static String byteArrayToHexString(byte[] b) {
+        StringBuilder resultSb = new StringBuilder();
+        for (byte aB : b) {
+            resultSb.append(byteToHexString(aB));
+        }
 
         return resultSb.toString();
     }
@@ -31,10 +32,9 @@ public class MD5Util {
 
     /**
      * 返回大写MD5
-     *
-     * @param origin
-     * @param charsetname
-     * @return
+     * @param origin 加密字段
+     * @param charsetname 字符集
+     * @return 加密后的字符串
      */
     private static String md5encode(String origin, String charsetname) {
         String resultString = null;
