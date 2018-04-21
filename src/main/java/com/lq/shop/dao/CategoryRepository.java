@@ -1,9 +1,9 @@
 package com.lq.shop.dao;
 
 import com.lq.shop.entity.CategoryEntity;
-import java.util.List;
-import java.util.Locale.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 /**
  * @author : luqing
