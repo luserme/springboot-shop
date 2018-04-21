@@ -30,7 +30,7 @@ public class ProductEntity {
     @Id
     @GeneratedValue
     @Column(columnDefinition = "INT COMMENT '商品id'")
-    private int id;
+    private Integer id;
 
     @Column(columnDefinition = "INT COMMENT '分类id,对应shop_category表的主键'")
     private int categoryId;
