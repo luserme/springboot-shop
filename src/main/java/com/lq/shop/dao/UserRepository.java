@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
      * @param username 用户名
      * @return 通过username查询到的数量
      */
-    @Query(value = "select count(u.username) from UserEntity u where u.username = ?1")
+    @Query(value = "select count(u.username) from UserEntity u where u.username = :username")
     long checkUsername(@Param(value = "username") String username);
 
     /**
@@ -28,24 +28,24 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
      * @param password 用户密码
      * @return 登录的用户信息
      */
-    @Query(value = "select u from UserEntity u where u.username = ?1  and u.password = ?2")
-    UserEntity selectLogin(String username, String password);
+    @Query(value = "select u from UserEntity u where u.username = :username  and u.password = :password")
+    UserEntity selectLogin(@Param("username") String username, @Param("password") String password);
 
     /**
      * 校验邮箱是否存在
      * @param email 邮箱
      * @return 通过email查询到的数量
      */
-    @Query(value = "select count(u.email) from UserEntity as u where u.email = ?1")
-    long checkEmail(String email);
+    @Query(value = "select count(u.email) from UserEntity as u where u.email = :email")
+    long checkEmail(@Param("email") String email);
 
     /**
      * 通过用户名查找问题
      * @param username 用户名
      * @return 问题
      */
-    @Query(value = "select u.question from UserEntity u where u.username = ?1")
-    String findQuestionByUsername(String username);
+    @Query(value = "select u.question from UserEntity u where u.username = :username")
+    String findQuestionByUsername(@Param("username") String username);
 
 
     /**

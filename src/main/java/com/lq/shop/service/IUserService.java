@@ -29,7 +29,7 @@ public interface IUserService {
     /**
      * 校验用户名和邮箱是否存在
      *
-     * @param str 需要校验的内容
+     * @param str  需要校验的内容
      * @param type 校验的类型
      * @return 校验结果
      */
@@ -48,15 +48,14 @@ public interface IUserService {
      *
      * @param username 用户名
      * @param question 问题
-     * @param answer 答案
+     * @param answer  答案
      * @return 校验结果
      */
     ServerResult checkAnswer(String username, String question, String answer);
 
     /**
      * 重置密码
-     *
-     * @param username 用户名
+     * @param username    用户名
      * @param passwordNew 新密码
      * @param forgetToken 权限码
      * @return 重置结果
@@ -65,7 +64,6 @@ public interface IUserService {
 
     /**
      * 更新用户信息
-     *
      * @param userEntity 用户信息实体类
      * @return 更新结果
      */
@@ -73,7 +71,6 @@ public interface IUserService {
 
     /**
      * 查找用户完整信息
-     *
      * @param id 用户id
      * @return 查找结果
      */
@@ -86,5 +83,12 @@ public interface IUserService {
      * @return 校验结果
      */
     ServerResult checkAdminRole(UserEntity userEntity);
+
+
+    /** 校验当前用户是否有管理员权限
+     * @param userEntity 当前用户信息
+     * @return 校验结果
+     */
+    ServerResult checkAdmin(UserEntity userEntity);
 
 }

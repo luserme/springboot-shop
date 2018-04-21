@@ -2,6 +2,7 @@ package com.lq.shop.service.impl;
 
 import com.lq.shop.common.response.Const;
 import com.lq.shop.common.response.Const.Role;
+import com.lq.shop.common.response.ResultCode;
 import com.lq.shop.common.response.ServerResult;
 import com.lq.shop.common.response.TokenCache;
 import com.lq.shop.common.util.BeanPropertiesUtil;
@@ -210,5 +211,20 @@ public class UserServiceImpl implements IUserService {
         return ServerResult.createByError();
     }
 
+
+    @Override
+    public ServerResult checkAdmin(UserEntity userEntity){
+        if (userEntity == null){
+            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),"用户未登录,请登录");
+        }
+
+        if (checkAdminRole(userEntity).isSuccess()){
+            return ServerResult.createBySuccess();
+        }else {
+            return ServerResult.createByErrorMessage("您没有权限操作");
+        }
+
+
+    }
 
 }

@@ -36,9 +36,9 @@ public class UserManageController {
             if (userEntity.getRole() == Role.ROLE_ADMIN){
                 session.setAttribute(Const.CURRENT_USER,userEntity);
                 return result;
+            }else {
+                return ServerResult.createByErrorMessage("不是管理员，无法登录");
             }
-        }else {
-            return ServerResult.createByErrorMessage("不是管理员，无法登录");
         }
 
         return result;
