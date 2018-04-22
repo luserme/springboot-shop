@@ -34,6 +34,7 @@ public class CartEntity {
     @Column(nullable = false)
     private Integer userId;
 
+    @Column(nullable = false)
     private Integer productId;
 
     private Integer quantity;
