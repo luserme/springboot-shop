@@ -10,6 +10,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
+import static com.lq.shop.common.util.PropertiesUtil.getProperty;
+
 /**
  * @author luqing
  * @date 2018/04/21 23:55
@@ -25,9 +27,15 @@ public class FtpUtil {
     private String pwd;
     private FTPClient ftpClient;
 
-    private static String ftpIp = PropertiesUtil.getProperty("ftp.server.ip");
-    private static String ftpUser = PropertiesUtil.getProperty("ftp.user");
-    private static String ftpPass = PropertiesUtil.getProperty("ftp.pass");
+    private static String ftpIp = getProperty("ftp.server.ip");
+    private static String ftpUser = getProperty("ftp.user");
+    private static String ftpPass = getProperty("ftp.pass");
+    private static String ftpPortStr = getProperty("ftp.port");
+
+    /**
+     * 默认端口21
+     */
+    private static int ftpPort = ftpPortStr==null?21:Integer.parseInt(ftpPortStr);
 
     private FtpUtil(String ip,int port,String user,String pwd){
         this.ip = ip;
@@ -37,7 +45,7 @@ public class FtpUtil {
     }
 
     public static boolean uploadFile(List<File> fileList) throws IOException {
-        FtpUtil ftpUtil = new FtpUtil(ftpIp,21,ftpUser,ftpPass);
+        FtpUtil ftpUtil = new FtpUtil(ftpIp,ftpPort,ftpUser,ftpPass);
         logger.info("开始连接ftp服务器");
         boolean result = ftpUtil.uploadFile("upload/img",fileList);
         logger.info("开始连接ftp服务器,结束上传,上传结果:{}",result);
@@ -83,7 +91,7 @@ public class FtpUtil {
         ftpClient = new FTPClient();
         ftpClient.setUseEPSVwithIPv4(true);
         try {
-            ftpClient.connect(ip);
+            ftpClient.connect(ip,port);
             isSuccess = ftpClient.login(user,pwd);
         } catch (IOException e) {
             logger.error("连接FTP服务器异常",e);
