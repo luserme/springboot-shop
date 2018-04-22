@@ -31,7 +31,6 @@ public class CartController {
 
 
     @RequestMapping("/list")
-    @ResponseBody
     public ServerResult<CartVO> list(HttpSession session){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
@@ -41,7 +40,6 @@ public class CartController {
     }
 
     @RequestMapping("/add")
-    @ResponseBody
     public ServerResult<CartVO> add(HttpSession session, Integer count, Integer productId){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
@@ -51,7 +49,6 @@ public class CartController {
     }
 
     @RequestMapping("/update")
-    @ResponseBody
     public ServerResult<CartVO> update(HttpSession session, Integer count, Integer productId){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
@@ -61,7 +58,6 @@ public class CartController {
     }
 
     @RequestMapping("/delete")
-    @ResponseBody
     public ServerResult<CartVO> deleteProduct(HttpSession session,String productIds){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
@@ -72,7 +68,6 @@ public class CartController {
 
 
     @RequestMapping("/select/all")
-    @ResponseBody
     public ServerResult<CartVO> selectAll(HttpSession session){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
@@ -82,7 +77,6 @@ public class CartController {
     }
 
     @RequestMapping("/unselect/all")
-    @ResponseBody
     public ServerResult<CartVO> unSelectAll(HttpSession session){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
@@ -94,7 +88,6 @@ public class CartController {
 
 
     @RequestMapping("/select")
-    @ResponseBody
     public ServerResult<CartVO> select(HttpSession session,Integer productId){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
@@ -104,7 +97,6 @@ public class CartController {
     }
 
     @RequestMapping("/unselect")
-    @ResponseBody
     public ServerResult<CartVO> unSelect(HttpSession session,Integer productId){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
@@ -115,7 +107,6 @@ public class CartController {
 
 
     @RequestMapping("/product/count")
-    @ResponseBody
     public ServerResult<Integer> getCartProductCount(HttpSession session){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
