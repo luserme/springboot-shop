@@ -1,6 +1,7 @@
 package com.lq.shop.entity;
 
-import java.sql.Timestamp;
+
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -28,7 +29,7 @@ public class ShippingEntity {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @Column(length = 20 ,columnDefinition = "INT(20) COMMENT '用户id'")
     private Integer userId;
@@ -58,9 +59,9 @@ public class ShippingEntity {
     private String receiverZip;
 
     @CreatedDate
-    private Timestamp createTime;
+    private Date createTime;
 
     @LastModifiedDate
-    private Timestamp updateTime;
+    private Date updateTime;
 
 }
