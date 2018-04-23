@@ -2,6 +2,7 @@ package com.lq.shop.controller.backend;
 
 import com.google.common.collect.Maps;
 import com.lq.shop.common.response.Const;
+import com.lq.shop.common.response.Const.Page;
 import com.lq.shop.common.response.ServerResult;
 import com.lq.shop.common.util.PropertiesUtil;
 import com.lq.shop.entity.ProductEntity;
@@ -84,7 +85,7 @@ public class ProductManageController {
     }
 
     @RequestMapping("/list")
-    public ServerResult getList(HttpSession session, @RequestParam(value = "pageNum",defaultValue = "0") int pageNum, @RequestParam(value = "pageSize",defaultValue = "10") int pageSize){
+    public ServerResult getList(HttpSession session, @RequestParam(value = "pageNum",defaultValue = Page.PAGE_DEFAULT_NUM) int pageNum, @RequestParam(value = "pageSize",defaultValue = Page.PAGE_DEFAULT_SIZE) int pageSize){
         UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
         ServerResult result = iUserService.checkAdmin(userEntity);
         if (result.isSuccess()){
@@ -94,7 +95,7 @@ public class ProductManageController {
     }
 
     @RequestMapping("/search")
-    public ServerResult productSearch(HttpSession session,String productName,Integer productId, @RequestParam(value = "pageNum",defaultValue = "0") int pageNum,@RequestParam(value = "pageSize",defaultValue = "10") int pageSize){
+    public ServerResult productSearch(HttpSession session,String productName,Integer productId, @RequestParam(value = "pageNum",defaultValue = Page.PAGE_DEFAULT_NUM) int pageNum,@RequestParam(value = "pageSize",defaultValue = Page.PAGE_DEFAULT_SIZE) int pageSize){
         UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
         ServerResult result = iUserService.checkAdmin(userEntity);
         if (result.isSuccess()){
