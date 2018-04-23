@@ -48,20 +48,24 @@ public class FileServiceImpl implements IFileService {
         try {
             file.transferTo(targetFile);
             //文件已经上传成功了
-            FtpUtil.uploadFile(Lists.newArrayList(targetFile));
+            boolean isUploadSuccess = FtpUtil.uploadFile(Lists.newArrayList(targetFile));
             //已经上传到ftp服务器上
-            boolean delete = targetFile.delete();
 
-            if (delete){
+            if (isUploadSuccess){
+                boolean delete = targetFile.delete();
+                if (delete){
                 logger.info("上传成功");
+                }
+            }else {
+                logger.error("上传失败");
+                return null;
             }
 
         } catch (IOException e) {
             logger.error("上传文件异常",e);
             return null;
         }
-        //A:abc.jpg
-        //B:abc.jpg
+
         return targetFile.getName();
     }
 

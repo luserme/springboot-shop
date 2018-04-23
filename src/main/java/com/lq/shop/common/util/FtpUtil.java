@@ -55,7 +55,7 @@ public class FtpUtil {
 
 
     private boolean uploadFile(String remotePath,List<File> fileList) throws IOException {
-        boolean uploaded = true;
+        boolean uploaded = false;
         FileInputStream fis = null;
         //连接FTP服务器
         if(connectServer(this.ip,this.port,this.user,this.pwd)){
@@ -69,10 +69,9 @@ public class FtpUtil {
                     fis = new FileInputStream(fileItem);
                     ftpClient.storeFile(fileItem.getName(),fis);
                 }
-
+                uploaded = true;
             } catch (IOException e) {
                 logger.error("上传文件异常",e);
-                uploaded = false;
                 e.printStackTrace();
             } finally {
                 assert fis != null;
@@ -87,13 +86,14 @@ public class FtpUtil {
 
     private boolean connectServer(String ip,int port,String user,String pwd){
 
-        boolean isSuccess = false;
+        boolean isSuccess;
         ftpClient = new FTPClient();
         ftpClient.setUseEPSVwithIPv4(true);
         try {
             ftpClient.connect(ip,port);
             isSuccess = ftpClient.login(user,pwd);
         } catch (IOException e) {
+            isSuccess = false;
             logger.error("连接FTP服务器异常",e);
         }
         return isSuccess;

@@ -1,6 +1,5 @@
 package com.lq.shop.service.impl;
 
-import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.lq.shop.common.response.Const;
 import com.lq.shop.common.response.ResultCode;
@@ -15,14 +14,12 @@ import com.lq.shop.entity.ProductEntity;
 import com.lq.shop.service.ICartService;
 import com.lq.shop.vo.CartProductVO;
 import com.lq.shop.vo.CartVO;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.apache.commons.collections.CollectionUtils;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.math.BigDecimal;
 import java.util.List;
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author luqing
@@ -108,7 +105,7 @@ public class CartServiceImpl implements ICartService {
 
         List<Integer> productList = Lists.newArrayList();
 
-        for (String productId : productIds.split(Const.Cart.PRODCUTID_DEC)){
+        for (String productId : productIds.split(Const.Cart.PRODUCT_ID_DEC)){
             productList.add(Integer.parseInt(productId));
         }
 

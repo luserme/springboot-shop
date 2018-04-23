@@ -117,6 +117,10 @@ public class ProductManageController {
 
             String targetFileName = iFileService.upload(file,path);
 
+            if (targetFileName == null){
+                return ServerResult.createByErrorMessage("上传文件失败");
+            }
+
             String url = PropertiesUtil.getProperty("ftp.server.http.prefix")+targetFileName;
             Map<String,String> fileMap = Maps.newHashMap();
             fileMap.put("uri",targetFileName);
