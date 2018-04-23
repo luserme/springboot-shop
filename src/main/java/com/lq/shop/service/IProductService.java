@@ -2,6 +2,8 @@ package com.lq.shop.service;
 
 import com.lq.shop.common.response.ServerResult;
 import com.lq.shop.entity.ProductEntity;
+import com.lq.shop.vo.ProductDetailVo;
+import org.springframework.data.domain.Page;
 
 /**
  * @author luqing
@@ -52,4 +54,23 @@ public interface IProductService {
      * @return 查询结果
      */
     ServerResult searchProduct(String productName, Integer productId, int pageNum, int pageSize);
+
+    /**
+     * 获取商品细节
+     * @param productId 商品id
+     * @return 商品结果
+     */
+    ServerResult<ProductDetailVo> findProductDetail(Integer productId);
+
+
+    /**
+     * 通过关键字和分类id获取分页的分类
+     * @param keyword 关键字
+     * @param categoryId 分类id
+     * @param pageNum 页码
+     * @param pageSize 分页大小
+     * @param orderBy 排序
+     * @return 查询结果
+     */
+    ServerResult<Page> findByKeywordAndCategoryId(String keyword, Integer categoryId, int pageNum, int pageSize, String orderBy);
 }
