@@ -22,4 +22,45 @@ public class Const {
          */
         int ROLE_ADMIN = 1;
     }
+
+
+    public interface Page {
+
+        /**
+         * 分页默认条数
+         */
+        String PAGE_DEFAULT_SIZE = "10";
+
+        /**
+         * 分页默认的页码
+         */
+        String PAGE_DEFAULT_NUM = "0";
+    }
+
+
+    public interface Cart{
+
+        /**
+         * 购物车选中状态
+         */
+        int CHECKED = 1;
+        /**
+         * 购物车中未选中状态
+         */
+        int UN_CHECKED = 0;
+
+        /**
+         * 增加数量大于库存数量 返回fail
+         */
+        String LIMIT_NUM_FAIL = "LIMIT_NUM_FAIL";
+        /**
+         * 增加数量大于库存数量 返回success
+         */
+        String LIMIT_NUM_SUCCESS = "LIMIT_NUM_SUCCESS";
+
+        /**
+         * 购物车中商品ids分隔符
+         */
+        String PRODUCT_ID_DEC = ",";
+    }
 }
