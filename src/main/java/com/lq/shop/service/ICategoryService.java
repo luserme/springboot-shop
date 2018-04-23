@@ -2,6 +2,8 @@ package com.lq.shop.service;
 
 import com.lq.shop.common.response.ServerResult;
 
+import java.util.List;
+
 /**
  * @author : luqing
  * @date : 2018/4/20 15:54
@@ -38,5 +40,5 @@ public interface ICategoryService {
      * @param categoryId 品类id
      * @return 查询结果
      */
-    ServerResult selectCategoryAndChildrenById(Integer categoryId);
+    ServerResult<List<Integer>> selectCategoryAndChildrenById(Integer categoryId);
 }
