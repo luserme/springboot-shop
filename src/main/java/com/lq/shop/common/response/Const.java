@@ -1,5 +1,8 @@
 package com.lq.shop.common.response;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * @author : luqing
  * @date : 2018/4/19 14:20
@@ -9,6 +12,41 @@ public class Const {
 
     public static final String EMAIL = "email";
     public static final String USERNAME = "username";
+
+    @Getter
+    @AllArgsConstructor
+    public enum PayPlayformEnm {
+
+        /**
+         * 支付方式
+         */
+        ALIPAY(1,"支付宝"),
+        WECHATPAY(2,"微信");
+
+        private Integer code;
+        private String value;
+
+    }
+
+
+    @Getter
+    @AllArgsConstructor
+    public enum OrderStatusEnum {
+
+        /**
+         * code 订单状态对应的状态码
+         * value 订单状态
+         */
+        CANCELED(0,"已取消"),
+        NO_PAY(10,"未付款"),
+        PAID(20,"已付款"),
+        SHIPPED(40,"已发货"),
+        ORDER_SUCCESS(50,"订单完成"),
+        ORDER_CLOSE(60,"订单关闭");
+
+        private Integer code;
+        private String value;
+    }
 
     public interface Role {
 
@@ -62,5 +100,13 @@ public class Const {
          * 购物车中商品ids分隔符
          */
         String PRODUCT_ID_DEC = ",";
+    }
+
+    public interface AlipayCallback {
+        String TRADE_STATUS_WAIT_BUYER_PAY = "WAIT_BUYER_PAY";
+        String TRADE_STATUS_TRADE_SUCCESS = "TRADE_SUCCESS";
+
+        String RESPONSE_SUCCESS = "success";
+        String RESPONSE_FAILED = "failed";
     }
 }
