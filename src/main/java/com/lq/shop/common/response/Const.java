@@ -1,7 +1,10 @@
 package com.lq.shop.common.response;
 
+import com.google.common.collect.Sets;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
+import java.util.Set;
 
 /**
  * @author : luqing
@@ -15,7 +18,7 @@ public class Const {
 
     @Getter
     @AllArgsConstructor
-    public enum PayPlayformEnm {
+    public enum PayPlayFromEnum {
 
         /**
          * 支付方式
@@ -26,6 +29,30 @@ public class Const {
         private Integer code;
         private String value;
 
+    }
+
+
+    public interface ProductListOrderBy{
+        Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc","price_asc");
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum ProductStatusEnum{
+        /**
+         * 在售状态
+         */
+        ON_SALE(1,"在线");
+        private int code;
+        private String value;
+
+        public String getValue() {
+            return value;
+        }
+
+        public int getCode() {
+            return code;
+        }
     }
 
 

@@ -179,7 +179,7 @@ public class OrderServiceImpl implements IOrderService {
         String timeoutExpress = "120m";
 
         // 商品明细列表，需填写购买商品详细信息，
-        List<GoodsDetail> goodsDetailList = new ArrayList<GoodsDetail>();
+        List<GoodsDetail> goodsDetailList = new ArrayList<>();
         // 创建一个商品信息，参数含义分别为商品id（使用国标）、名称、单价（单位为分）、数量，如果需要添加商品类别，详见GoodsDetail
 
         List<OrderItemEntity> orderItemList = orderItemRepository
@@ -304,7 +304,7 @@ public class OrderServiceImpl implements IOrderService {
         PayInfoEntity payInfo = new PayInfoEntity();
         payInfo.setUserId(order.getUserId());
         payInfo.setOrderNo(order.getOrderNo());
-        payInfo.setPayPlatform(Const.PayPlayformEnm.ALIPAY.getCode());
+        payInfo.setPayPlatform(Const.PayPlayFromEnum.ALIPAY.getCode());
         payInfo.setPlatformNumber(tradeNo);
         payInfo.setPlatformStatus(tradeStatus);
 
