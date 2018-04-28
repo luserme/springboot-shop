@@ -73,6 +73,15 @@ public interface IOrderService {
      */
     ServerResult getOrderList(Integer userId, Integer pageNum, Integer pageSize);
 
+
+    /**
+     * 订单收货功能
+     * @param userId 用户id
+     * @param orderNo 订单号
+     * @return 收货结果
+     */
+    ServerResult deliveryGoods(Integer userId, Long orderNo);
+
     /**
      * 管理员分页获取订单及和
      * @param pageNum 页码
@@ -103,4 +112,5 @@ public interface IOrderService {
      * @return 发货结果
      */
     ServerResult manageSendGoods(Long orderNo);
+
 }

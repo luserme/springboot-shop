@@ -502,6 +502,25 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
+    public ServerResult deliveryGoods(Integer userId, Long orderNo) {
+
+        OrderEntity order = orderRepository.findByUserIdAndOrderNo(userId,orderNo);
+
+        if (order == null){
+            return ServerResult.createByErrorMessage("找不到订单");
+        }
+
+        if (!Objects.equals(OrderStatusEnum.SHIPPED.getCode(),order.getStatus())){
+            return ServerResult.createByErrorMessage("该订单状态无法收货");
+        }
+
+        order.setStatus(OrderStatusEnum.ORDER_SUCCESS.getCode());
+        order.setEndTime(new Date());
+        orderRepository.save(order);
+        return ServerResult.createBySuccess("订单收货成功");
+    }
+
+    @Override
     public ServerResult manageList(Integer pageNum, Integer pageSize) {
         Pageable pageable = new PageRequest(pageNum,pageSize);
 

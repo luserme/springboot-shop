@@ -139,6 +139,18 @@ public class OrderController {
         return iOrderService.getOrderDetail(user.getId(),orderNo);
     }
 
+    @RequestMapping("/delivery/goods")
+    public  ServerResult deliveryGoods(HttpSession session,Long orderNo){
+        UserEntity user = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+        if (user == null){
+            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
+                ResultCode.NEED_LOGIN.getDesc());
+        }
+
+        return iOrderService.deliveryGoods(user.getId(),orderNo);
+    }
+
+
 
     @RequestMapping("/list")
     public  ServerResult list(
