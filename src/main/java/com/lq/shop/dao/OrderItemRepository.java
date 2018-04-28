@@ -3,6 +3,8 @@ package com.lq.shop.dao;
 import com.alipay.api.domain.OrderItem;
 import com.lq.shop.entity.OrderItemEntity;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -19,4 +21,18 @@ public interface OrderItemRepository extends JpaRepository<OrderItemEntity,Integ
      */
     List<OrderItemEntity> findByUserIdAndOrderNo(Integer userId, Long orderNo);
 
+    /**
+     * 通过订单号获取订单详细
+     * @param orderNo 订单号
+     * @return 查询结果
+     */
+    List<OrderItemEntity> findByOrderNo(Long orderNo);
+
+    /**
+     * 通过订单号获取订单分页详细
+     * @param orderNo 订单号
+     * @param pageable 分页对象
+     * @return 分页结果
+     */
+    Page<OrderItemEntity> findByOrderNo(Long orderNo, Pageable pageable);
 }

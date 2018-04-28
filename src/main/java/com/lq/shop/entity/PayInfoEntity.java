@@ -1,6 +1,7 @@
 package com.lq.shop.entity;
 
-import java.sql.Timestamp;
+
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -48,10 +49,10 @@ public class PayInfoEntity {
 
     @CreatedDate
     @Column(columnDefinition = "DATETIME COMMENT '创建时间'")
-    private Timestamp createTime;
+    private Date createTime;
 
     @LastModifiedDate
     @Column(columnDefinition = "DATETIME COMMENT '更新时间'")
-    private Timestamp updateTime;
+    private Date updateTime;
 
 }

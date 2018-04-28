@@ -75,4 +75,11 @@ public interface CartRepository extends JpaRepository<CartEntity,Integer> {
     int countAllByUserId(Integer userId);
 
 
+    /**
+     * 通过选中状态查找购物车中选中的商品
+     * @param userId 用户id
+     * @param checked 选中状态
+     * @return 查找结果
+     */
+    List<CartEntity> findAllByUserIdAndChecked(Integer userId, int checked);
 }

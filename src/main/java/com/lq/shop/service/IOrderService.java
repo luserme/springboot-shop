@@ -32,4 +32,75 @@ public interface IOrderService {
      * @return 查找结果
      */
     ServerResult findOrderPayStatus(Integer userId, Long orderNo);
+
+    /**
+     * 创建订单
+     * @param userId 用户id
+     * @param shippingId 收货地址id
+     * @return 创建结果
+     */
+    ServerResult createOrder(Integer userId, Integer shippingId);
+
+    /**
+     * 取消订单
+     * @param userId 用户id
+     * @param orderNo 订单号
+     * @return 取消结果
+     */
+    ServerResult cancel(Integer userId,Long orderNo);
+
+    /**
+     * 获取订单的商品信息
+     * @param userId 用户id
+     * @return 获取结果
+     */
+    ServerResult getOrderProduct(Integer userId);
+
+    /**
+     * 获取订单详情
+     * @param userId 用户id
+     * @param orderNo 订单号
+     * @return 详情
+     */
+    ServerResult getOrderDetail(Integer userId, Long orderNo);
+
+    /**
+     * 获取订单集合
+     * @param userId 用户id
+     * @param pageNum 页码
+     * @param pageSize 每页大小
+     * @return 订单集合
+     */
+    ServerResult getOrderList(Integer userId, Integer pageNum, Integer pageSize);
+
+    /**
+     * 管理员分页获取订单及和
+     * @param pageNum 页码
+     * @param pageSize 每页大小
+     * @return 查询结果
+     */
+    ServerResult manageList(Integer pageNum, Integer pageSize);
+
+    /**
+     * 管理员查询订单详情
+     * @param orderNo 订单号
+     * @return 查询结果
+     */
+    ServerResult manageDetail(Long orderNo);
+
+    /**
+     * 通过订单号查找订单中所有商品
+     * @param orderNo 订单号
+     * @param pageNum 页码
+     * @param pageSize 每页大小
+     * @return 搜索结果
+     */
+    ServerResult manageSearch(Long orderNo, Integer pageNum, Integer pageSize);
+
+    /**
+     * 发货
+     * @param orderNo 订单号
+     * @return 发货结果
+     */
+    ServerResult manageSendGoods(Long orderNo);
 }

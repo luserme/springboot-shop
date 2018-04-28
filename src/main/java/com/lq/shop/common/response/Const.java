@@ -1,6 +1,7 @@
 package com.lq.shop.common.response;
 
 import com.google.common.collect.Sets;
+import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -31,6 +32,28 @@ public class Const {
 
     }
 
+    @Getter
+    @AllArgsConstructor
+    public enum PaymentTypeEnum {
+
+        /**
+         * 支付方式
+         */
+        ONLINE_PAY(1,"在线支付");
+
+        private Integer code;
+        private String value;
+
+        public static PaymentTypeEnum codeOf(Integer code) {
+            for(PaymentTypeEnum paymentTypeEnum : values()){
+                if(Objects.equals(paymentTypeEnum.getCode(), code)){
+                    return paymentTypeEnum;
+                }
+            }
+            throw new RuntimeException("没有找到对应的枚举");
+        }
+    }
+
 
     public interface ProductListOrderBy{
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc","price_asc");
@@ -43,16 +66,10 @@ public class Const {
          * 在售状态
          */
         ON_SALE(1,"在线");
-        private int code;
+
+        private Integer code;
         private String value;
 
-        public String getValue() {
-            return value;
-        }
-
-        public int getCode() {
-            return code;
-        }
     }
 
 
@@ -73,6 +90,15 @@ public class Const {
 
         private Integer code;
         private String value;
+
+        public static OrderStatusEnum codeOf(Integer code) {
+            for(OrderStatusEnum orderStatusEnum : values()){
+                if(Objects.equals(orderStatusEnum.getCode(), code)){
+                    return orderStatusEnum;
+                }
+            }
+            throw new RuntimeException("没有找到对应的枚举");
+        }
     }
 
     public interface Role {

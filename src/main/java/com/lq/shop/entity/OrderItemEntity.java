@@ -1,7 +1,7 @@
 package com.lq.shop.entity;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -62,8 +62,8 @@ public class OrderItemEntity {
     private BigDecimal totalPrice;
 
     @CreatedDate
-    private Timestamp createTime;
+    private Date createTime;
 
     @LastModifiedDate
-    private Timestamp updateTime;
+    private Date updateTime;
 }

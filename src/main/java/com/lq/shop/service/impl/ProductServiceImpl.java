@@ -254,8 +254,8 @@ public class ProductServiceImpl implements IProductService{
             productDetailVo.setParentCategoryId(categoryEntity.getParentId());
         }
 
-        productDetailVo.setCreateTime(DateTimeUtil.dataToStr(productEntity.getCreateTime()));
-        productDetailVo.setUpdateTime(DateTimeUtil.dataToStr(productEntity.getUpdateTime()));
+        productDetailVo.setCreateTime(DateTimeUtil.dateToStr(productEntity.getCreateTime()));
+        productDetailVo.setUpdateTime(DateTimeUtil.dateToStr(productEntity.getUpdateTime()));
 
         return productDetailVo;
     }

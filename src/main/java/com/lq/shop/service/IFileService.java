@@ -1,6 +1,8 @@
 package com.lq.shop.service;
 
-import org.springframework.web.multipart.MultipartFile; /**
+import org.springframework.web.multipart.MultipartFile;
+
+/**
  * @author luqing
  * @date 2018/04/21 23:50
  */

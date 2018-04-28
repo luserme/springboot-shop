@@ -1,6 +1,9 @@
 package com.lq.shop.dao;
 
 import com.lq.shop.entity.OrderEntity;
+import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -23,5 +26,13 @@ public interface OrderRepository extends JpaRepository<OrderEntity,Integer>{
      * @return 查找结果
      */
     OrderEntity findByOrderNo(Long orderNo);
+
+    /**
+     * 分页查找用户的所有订单
+     * @param userId 用户id
+     * @param pageable 订单实体
+     * @return 分页订单集合
+     */
+    Page<OrderEntity> findAllByUserId(Integer userId, Pageable pageable);
 
 }
