@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author luqing
@@ -52,6 +53,7 @@ public class ProductServiceImpl implements IProductService{
     }
 
     @Override
+    @Transactional(rollbackFor = {})
     public ServerResult saveOrUpdateProduct(ProductEntity productEntity) {
         if (productEntity != null){
             if (StringUtils.isNotBlank(productEntity.getSubImages())){
@@ -77,6 +79,7 @@ public class ProductServiceImpl implements IProductService{
     }
 
     @Override
+    @Transactional(rollbackFor = {})
     public ServerResult setSaleStatus(Integer productId, Integer status) {
         if (productId == null || status == null){
             return ServerResult.createByErrorCodeMessage(ResultCode.ILLEGAL_ARGUMENT.getCode(),ResultCode.ILLEGAL_ARGUMENT.getDesc());

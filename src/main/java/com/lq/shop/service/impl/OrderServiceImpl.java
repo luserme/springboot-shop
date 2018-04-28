@@ -292,6 +292,7 @@ public class OrderServiceImpl implements IOrderService {
 
 
     @Override
+    @Transactional(rollbackFor = {})
     public ServerResult aliCallback(Map<String, String[]> requestParams) {
 
         Map<String, String> params = Maps.newHashMap();
@@ -422,6 +423,7 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
+    @Transactional(rollbackFor = {})
     public ServerResult cancel(Integer userId, Long orderNo) {
 
         OrderEntity order = orderRepository.findByUserIdAndOrderNo(userId,orderNo);
@@ -502,6 +504,7 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
+    @Transactional(rollbackFor = {})
     public ServerResult deliveryGoods(Integer userId, Long orderNo) {
 
         OrderEntity order = orderRepository.findByUserIdAndOrderNo(userId,orderNo);
@@ -564,6 +567,7 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
+    @Transactional(rollbackFor = {})
     public ServerResult manageSendGoods(Long orderNo) {
 
         OrderEntity order = orderRepository.findByOrderNo(orderNo);

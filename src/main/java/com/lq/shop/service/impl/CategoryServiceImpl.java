@@ -13,6 +13,7 @@ import java.util.Set;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 /**
@@ -31,6 +32,7 @@ public class CategoryServiceImpl implements ICategoryService{
     }
 
     @Override
+    @Transactional(rollbackFor = {})
     public ServerResult addCategory(String categoryName, Integer parentId) {
 
         if (parentId == null || StringUtils.isBlank(categoryName)){
@@ -53,6 +55,7 @@ public class CategoryServiceImpl implements ICategoryService{
     }
 
     @Override
+    @Transactional(rollbackFor = {})
     public ServerResult updateCategoryName(Integer categoryId, String categoryName) {
 
         if (categoryId == null || StringUtils.isBlank(categoryName)){
