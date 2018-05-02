@@ -1,39 +1,68 @@
 # springboot-shop
 
 #### 项目介绍
-{**以下是码云平台说明，您可以替换为您的项目简介**
-码云是开源中国推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+**毕业设计:基于ssj商城的设计与实现**
+基于springboot + spring + spring data jpa 的商城项目
+
+#### 功能模块
+
+- 用户管理模块
+- 分类管理模块
+- 商品模块
+- 购物车模块
+- 收货地址模块
+- 支付模块
+- 订单模块
 
 #### 软件架构
-软件架构说明
 
+- [v1.0:单体架构](https://gitee.com/luserme/springboot-shop/tree/v1.0/)
+- [v2.0:nginx+tomcat+redis分布式集群 (ing)](https://gitee.com/luserme/springboot-shop/tree/develop/)
+- v3.0:基于spring cloud微服务 (后续)
 
-#### 安装教程
+#### 使用技术(v1.0)
 
-1. xxxx
-2. xxxx
-3. xxxx
+###### 框架
+- springboot
+- spring
+- spring data jpa
+
+###### java插件
+- lombok
+- guava
+- joda-time
+- Jackson
+
+###### 数据库
+- mysql
+
+###### 工具
+- vsftpd
+
+###### 支付对接
+- 支付宝当面付
+
+###### 系统环境
+- manjaro linux 17.1
+
+###### 开发工具
+- idea 2017.2.6
+
+###### 容器及服务
+- tomcat
+- nginx
+- vsftpd
 
 #### 使用说明
 
-1. xxxx
-2. xxxx
-3. xxxx
+1. IDE中添加lombok插件,否则无法识别会报错
+2. 修改数据库连接池
+3. 修改ftp服务器信息
+4. 使用nginx搭建图片服务器
+5. 支付宝配置信息可以先调通官方沙箱demo,修改zfbinfo.properties中信息
 
-#### 参与贡献
+#### 感谢
+感谢geely老师的教程,学习过程中收益匪浅,贴一下geely老师的教程地址
 
-1. Fork 本项目
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
-
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [http://git.mydoc.io/](http://git.mydoc.io/)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1. [Java大牛 带你从0到上线开发企业级电商项目](http://coding.imooc.com/class/96.html)
+2. [Java企业级电商项目架构演进之路 Tomcat集群与Redis分布式](http://coding.imooc.com/class/162.html)
