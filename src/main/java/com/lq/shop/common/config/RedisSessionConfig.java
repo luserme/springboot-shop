@@ -1,14 +1,11 @@
 package com.lq.shop.common.config;
 
+import com.lq.shop.common.response.Const;
 import com.lq.shop.common.util.CookieUtil;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-import org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration;
 import org.springframework.session.web.http.DefaultCookieSerializer;
-import org.springframework.web.filter.DelegatingFilterProxy;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
@@ -16,7 +13,7 @@ import redis.clients.jedis.JedisPoolConfig;
  * @date 2018/05/05 01:01
  */
 @Configuration
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400*30)
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = Const.RedisCacheExtime.REDIS_SESSION_EXTIME)
 public class RedisSessionConfig{
 
     @Bean
