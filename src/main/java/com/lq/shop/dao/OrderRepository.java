@@ -1,7 +1,6 @@
 package com.lq.shop.dao;
 
 import com.lq.shop.entity.OrderEntity;
-import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
