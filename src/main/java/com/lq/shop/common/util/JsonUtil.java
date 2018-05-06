@@ -29,7 +29,7 @@ public class JsonUtil {
         //设置格式化的格式
         // NON_FINAL : [Object,Object.toJson格式] 按对象反序列化
         //JAVA_LANG_OBJECT : Object.toJson 格式 按字段反序列化
-        objectMapper.enableDefaultTyping(DefaultTyping.NON_FINAL);
+        objectMapper.enableDefaultTyping(DefaultTyping.JAVA_LANG_OBJECT);
 
         //格式化时间 yyyy-MM-dd HH:mm:ss
         objectMapper.setDateFormat(new SimpleDateFormat(DateTimeUtil.STANDARD_FORMAT));
