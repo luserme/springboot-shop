@@ -2,7 +2,6 @@ package com.lq.shop.service.impl;
 
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayResponse;
-
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.response.AlipayTradePrecreateResponse;
 import com.alipay.demo.trade.config.Configs;
@@ -18,43 +17,19 @@ import com.google.common.collect.Maps;
 import com.lq.shop.common.response.Const;
 import com.lq.shop.common.response.Const.Cart;
 import com.lq.shop.common.response.Const.OrderStatusEnum;
-
 import com.lq.shop.common.response.Const.ProductStatusEnum;
 import com.lq.shop.common.response.ServerResult;
-import com.lq.shop.common.util.BigDecimalUtil;
-import com.lq.shop.common.util.DateTimeUtil;
-import com.lq.shop.common.util.FtpUtil;
-import com.lq.shop.common.util.PropertiesUtil;
-import com.lq.shop.dao.CartRepository;
-import com.lq.shop.dao.OrderItemRepository;
-import com.lq.shop.dao.OrderRepository;
-import com.lq.shop.dao.PayInfoRepository;
-import com.lq.shop.dao.ProductRepository;
-import com.lq.shop.dao.ShippingRepository;
-import com.lq.shop.entity.CartEntity;
-import com.lq.shop.entity.OrderEntity;
-import com.lq.shop.entity.OrderItemEntity;
-import com.lq.shop.entity.PayInfoEntity;
-import com.lq.shop.entity.ProductEntity;
-import com.lq.shop.entity.ShippingEntity;
+import com.lq.shop.common.util.*;
+import com.lq.shop.dao.*;
+import com.lq.shop.entity.*;
 import com.lq.shop.service.IOrderService;
 import com.lq.shop.vo.OrderItemVO;
 import com.lq.shop.vo.OrderProductVO;
 import com.lq.shop.vo.OrderVO;
 import com.lq.shop.vo.ShippingVO;
-import java.io.File;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +39,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.io.File;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * @author : luqing
