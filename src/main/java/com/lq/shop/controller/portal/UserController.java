@@ -97,9 +97,9 @@ public class UserController {
     @RequestMapping(value = "/all/info",method = RequestMethod.GET)
     public ServerResult getAllInfo(HttpSession session){
         UserEntity currentUser = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        if (currentUser == null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),"未登录,需要强制登录status=10");
-        }
+//        if (currentUser == null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),"未登录,需要强制登录status=10");
+//        }
         return iUserService.getUserInfo(currentUser.getId());
     }
 

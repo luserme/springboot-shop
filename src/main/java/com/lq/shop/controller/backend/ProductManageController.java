@@ -54,62 +54,62 @@ public class ProductManageController {
 
     @RequestMapping("/save")
     public ServerResult productProduct(HttpSession session, ProductEntity productEntity){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iProductService.saveOrUpdateProduct(productEntity);
-        }
-
-        return result;
+//        }
+//
+//        return result;
     }
 
 
     @RequestMapping("/sale/status")
     public ServerResult setSaleStatus(HttpSession session,Integer productId,Integer status){
         UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iProductService.setSaleStatus(productId,status);
-        }
-        return result;
+//        }
+//        return result;
     }
 
     @RequestMapping("/detail")
     public ServerResult getDetail(HttpSession session,Integer productId){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iProductService.manageProductDetail(productId);
-        }
-        return result;
+//        }
+//        return result;
     }
 
     @RequestMapping("/list")
     public ServerResult getList(HttpSession session, @RequestParam(value = "pageNum",defaultValue = Page.PAGE_DEFAULT_NUM) int pageNum, @RequestParam(value = "pageSize",defaultValue = Page.PAGE_DEFAULT_SIZE) int pageSize){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iProductService.getProductList(pageNum,pageSize);
-        }
-        return result;
+//        }
+//        return result;
     }
 
     @RequestMapping("/search")
     public ServerResult productSearch(HttpSession session,String productName,Integer productId, @RequestParam(value = "pageNum",defaultValue = Page.PAGE_DEFAULT_NUM) int pageNum,@RequestParam(value = "pageSize",defaultValue = Page.PAGE_DEFAULT_SIZE) int pageSize){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iProductService.searchProduct(productName,productId,pageNum,pageSize);
-        }
-        return result;
+//        }
+//        return result;
     }
 
 
     @RequestMapping("/upload")
     public ServerResult upload(HttpSession session, @RequestParam(value = "upload_file",required = false) MultipartFile file, HttpServletRequest request){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             String path = request.getSession().getServletContext().getRealPath("upload");
 
             if(file == null){
@@ -128,18 +128,18 @@ public class ProductManageController {
             fileMap.put("url",url);
 
             return ServerResult.createBySuccess(fileMap);
-        }
-
-        return result;
+//        }
+//
+//        return result;
     }
 
 
     @RequestMapping("/upload/richtxt")
     public Map richtextImgUpload(HttpSession session, @RequestParam(value = "upload_file",required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
         Map<String,String> resultMap = Maps.newHashMap();
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()) {
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()) {
             String path = request.getSession().getServletContext().getRealPath("upload");
             String targetFileName = iFileService.upload(file,path);
 
@@ -158,11 +158,11 @@ public class ProductManageController {
             resultMap.put("data",success.getData());
             response.addHeader("Access-Control-Allow-Headers","X-File-Name");
             return resultMap;
-        }
+//        }
 
-        resultMap.put("status", String.valueOf(result.getStatus()));
-        resultMap.put("msg",result.getMsg());
-        return resultMap;
+//        resultMap.put("status", String.valueOf(result.getStatus()));
+//        resultMap.put("msg",result.getMsg());
+//        return resultMap;
     }
 
-    }
+}

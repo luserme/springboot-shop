@@ -203,6 +203,14 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public ServerResult checkLogin(UserEntity userEntity) {
+        if (userEntity == null){
+            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+        }
+        return ServerResult.createBySuccess();
+    }
+
+    @Override
     public ServerResult checkAdminRole(UserEntity userEntity){
         if (userEntity != null && userEntity.getRole() == Role.ROLE_ADMIN){
             return ServerResult.createBySuccess();
@@ -215,7 +223,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public ServerResult checkAdmin(UserEntity userEntity){
         if (userEntity == null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),"用户未登录,请登录");
+            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
         }
 
         if (checkAdminRole(userEntity).isSuccess()){
@@ -223,7 +231,6 @@ public class UserServiceImpl implements IUserService {
         }else {
             return ServerResult.createByErrorMessage("您没有权限操作");
         }
-
 
     }
 
