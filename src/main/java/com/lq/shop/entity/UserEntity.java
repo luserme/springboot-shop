@@ -1,6 +1,8 @@
 package com.lq.shop.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +35,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity{
+public class UserEntity implements Serializable {
 
     @Id
     @GeneratedValue
