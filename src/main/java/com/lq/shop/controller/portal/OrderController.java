@@ -62,9 +62,9 @@ public class OrderController {
     @RequestMapping("/pay/status")
     public ServerResult findOrderPayStatus(HttpSession session,Long orderNo){
         UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        if (userEntity == null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if (userEntity == null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
 
         ServerResult result = iOrderService.findOrderPayStatus(userEntity.getId(),orderNo);
 
@@ -84,10 +84,10 @@ public class OrderController {
     @RequestMapping("/create")
     public ServerResult create(HttpSession session,Integer shippingId){
         UserEntity user = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        if (user == null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
-                ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if (user == null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
+//                ResultCode.NEED_LOGIN.getDesc());
+//        }
 
         return iOrderService.createOrder(user.getId(),shippingId);
     }
@@ -102,10 +102,10 @@ public class OrderController {
     public ServerResult cancel(HttpSession session,Long orderNo){
         UserEntity user = (UserEntity) session.getAttribute(Const.CURRENT_USER);
 
-        if (user == null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
-                ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if (user == null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
+//                ResultCode.NEED_LOGIN.getDesc());
+//        }
 
         return iOrderService.cancel(user.getId(),orderNo);
     }
@@ -118,10 +118,10 @@ public class OrderController {
     @RequestMapping("/product")
     public ServerResult getOrderProduct(HttpSession session){
         UserEntity user = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        if (user == null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
-                ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if (user == null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
+//                ResultCode.NEED_LOGIN.getDesc());
+//        }
 
         return iOrderService.getOrderProduct(user.getId());
     }
@@ -129,10 +129,10 @@ public class OrderController {
     @RequestMapping("/detail")
     public  ServerResult detail(HttpSession session,Long orderNo){
         UserEntity user = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        if (user == null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
-                ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if (user == null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
+//                ResultCode.NEED_LOGIN.getDesc());
+//        }
 
         return iOrderService.getOrderDetail(user.getId(),orderNo);
     }
@@ -140,10 +140,10 @@ public class OrderController {
     @RequestMapping("/delivery/goods")
     public  ServerResult deliveryGoods(HttpSession session,Long orderNo){
         UserEntity user = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        if (user == null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
-                ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if (user == null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
+//                ResultCode.NEED_LOGIN.getDesc());
+//        }
 
         return iOrderService.deliveryGoods(user.getId(),orderNo);
     }
@@ -157,10 +157,10 @@ public class OrderController {
         @RequestParam(value = "pageSize",defaultValue = Const.Page.PAGE_DEFAULT_SIZE) Integer pageSize){
 
         UserEntity user = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        if (user == null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
-                ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if (user == null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),
+//                ResultCode.NEED_LOGIN.getDesc());
+//        }
 
         return iOrderService.getOrderList(user.getId(),pageNum,pageSize);
     }

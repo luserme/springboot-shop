@@ -1,4 +1,4 @@
-package com.lq.shop.common.response;
+package com.lq.shop.common.config;
 
 import com.lq.shop.common.util.JsonUtil;
 import org.springframework.cache.CacheManager;
@@ -12,6 +12,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
  * @author : luqing
@@ -19,6 +20,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
  */
 @Configuration
 @EnableCaching
+@EnableRedisHttpSession
 public class RedisConfig extends CachingConfigurerSupport {
 
     @Override
@@ -44,7 +46,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
     @Bean
-    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
+    public RedisTemplate redisTemplate(RedisConnectionFactory factory) {
         StringRedisTemplate template = new StringRedisTemplate(factory);
         Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
 

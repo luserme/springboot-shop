@@ -76,6 +76,12 @@ public interface IUserService {
      */
     ServerResult getUserInfo(Integer id);
 
+    /**
+     * 检查是否登录
+     * @param userEntity 用户对象
+     * @return 校验结果
+     */
+    ServerResult checkLogin(UserEntity userEntity);
 
     /**
      * 校验是否是管理源

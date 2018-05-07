@@ -20,7 +20,12 @@ public class StringUtils {
         return org.apache.commons.lang3.StringUtils.isEmpty(value);
     }
 
-    public static boolean equals(String forgetToken, String token) {
-        return org.apache.commons.lang3.StringUtils.equals(forgetToken,token);
+    public static boolean isNotEmpty(String value){
+        return org.apache.commons.lang3.StringUtils.isNotEmpty(value);
+    }
+
+
+    public static boolean equals(String str1, String str2) {
+        return org.apache.commons.lang3.StringUtils.equals(str1,str2);
     }
 }

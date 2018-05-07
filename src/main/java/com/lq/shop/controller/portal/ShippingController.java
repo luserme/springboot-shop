@@ -34,9 +34,9 @@ public class ShippingController {
     @RequestMapping("/add")
     public ServerResult add(HttpSession session,ShippingEntity shipping){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iShippingService.addShipping(user.getId(),shipping);
     }
 
@@ -45,9 +45,9 @@ public class ShippingController {
     @ResponseBody
     public ServerResult del(HttpSession session,Integer shippingId){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iShippingService.delShipping(user.getId(),shippingId);
     }
 
@@ -55,9 +55,9 @@ public class ShippingController {
     @ResponseBody
     public ServerResult update(HttpSession session,ShippingEntity shipping){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iShippingService.updateShipping(user.getId(),shipping);
     }
 
@@ -66,9 +66,9 @@ public class ShippingController {
     @ResponseBody
     public ServerResult<ShippingEntity> select(HttpSession session,Integer shippingId){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iShippingService.selectShipping(user.getId(),shippingId);
     }
 
@@ -79,9 +79,9 @@ public class ShippingController {
         @RequestParam(value = "pageSize",defaultValue = Page.PAGE_DEFAULT_SIZE)int pageSize,
         HttpSession session){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iShippingService.getShippingList(user.getId(),pageNum,pageSize);
     }
 

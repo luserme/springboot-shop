@@ -41,12 +41,12 @@ public class OrderManageController {
         @RequestParam(value = "pageNum",defaultValue = Const.Page.PAGE_DEFAULT_NUM) Integer pageNum,
         @RequestParam(value = "pageSize",defaultValue = Const.Page.PAGE_DEFAULT_SIZE) Integer pageSize
     ){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iOrderService.manageList(pageNum,pageSize);
-        }
-        return result;
+//        }
+//        return result;
     }
 
 

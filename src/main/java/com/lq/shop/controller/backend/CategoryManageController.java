@@ -38,42 +38,42 @@ public class CategoryManageController {
 
     @RequestMapping("/add/category")
     public ServerResult addCategory(HttpSession session,String categoryName,@RequestParam(value = "parentId",defaultValue = "0") Integer parentId){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iCategoryService.addCategory(categoryName,parentId);
-        }
-        return result;
+//        }
+//        return result;
     }
 
 
     @RequestMapping("/update/category")
     public ServerResult setCategoryName(HttpSession session,Integer categoryId,String categoryName){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iCategoryService.updateCategoryName(categoryId,categoryName);
-        }
-        return result;
+//        }
+//        return result;
     }
 
     @RequestMapping("/category")
     public ServerResult getChildrenParallelCategory(HttpSession session,@RequestParam(value = "categoryId" ,defaultValue = "0") Integer categoryId){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iCategoryService.getChildrenParallelCategory(categoryId);
-        }
-        return result;
+//        }
+//        return result;
     }
     @RequestMapping("/deep/category")
     public ServerResult getCategoryAndDeepChildrenCategory(HttpSession session,@RequestParam(value = "categoryId" ,defaultValue = "0") Integer categoryId){
-        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        ServerResult result = iUserService.checkAdmin(userEntity);
-        if (result.isSuccess()){
+//        UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
+//        ServerResult result = iUserService.checkAdmin(userEntity);
+//        if (result.isSuccess()){
             return iCategoryService.selectCategoryAndChildrenById(categoryId);
-        }
-        return result;
+//        }
+//        return result;
     }
 
 }

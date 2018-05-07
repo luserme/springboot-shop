@@ -5,11 +5,9 @@ import com.lq.shop.common.response.ResultCode;
 import com.lq.shop.common.response.ServerResult;
 import com.lq.shop.entity.UserEntity;
 import com.lq.shop.service.ICartService;
-import com.lq.shop.service.ICategoryService;
 import com.lq.shop.vo.CartVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -33,36 +31,36 @@ public class CartController {
     @RequestMapping("/list")
     public ServerResult<CartVO> list(HttpSession session){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iCartService.getCartList(user.getId());
     }
 
     @RequestMapping("/add")
     public ServerResult<CartVO> add(HttpSession session, Integer count, Integer productId){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iCartService.add(user.getId(),productId,count);
     }
 
     @RequestMapping("/update")
     public ServerResult<CartVO> update(HttpSession session, Integer count, Integer productId){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iCartService.update(user.getId(),productId,count);
     }
 
     @RequestMapping("/delete")
     public ServerResult<CartVO> deleteProduct(HttpSession session,String productIds){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iCartService.deleteProduct(user.getId(),productIds);
     }
 
@@ -70,18 +68,18 @@ public class CartController {
     @RequestMapping("/select/all")
     public ServerResult<CartVO> selectAll(HttpSession session){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iCartService.selectOrUnSelect(user.getId(),null,Const.Cart.CHECKED);
     }
 
     @RequestMapping("/unselect/all")
     public ServerResult<CartVO> unSelectAll(HttpSession session){
         UserEntity user = (UserEntity)session.getAttribute(Const.CURRENT_USER);
-        if(user ==null){
-            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
-        }
+//        if(user ==null){
+//            return ServerResult.createByErrorCodeMessage(ResultCode.NEED_LOGIN.getCode(),ResultCode.NEED_LOGIN.getDesc());
+//        }
         return iCartService.selectOrUnSelect(user.getId(),null,Const.Cart.UN_CHECKED);
     }
 

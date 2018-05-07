@@ -162,4 +162,9 @@ public class Const {
         String RESPONSE_SUCCESS = "success";
         String RESPONSE_FAILED = "failed";
     }
+
+    public interface RedisCacheExtime {
+
+        int REDIS_SESSION_EXTIME = 60*60;
+    }
 }

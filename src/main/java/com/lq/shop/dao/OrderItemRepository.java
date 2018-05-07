@@ -1,12 +1,11 @@
 package com.lq.shop.dao;
 
-import com.alipay.api.domain.OrderItem;
 import com.lq.shop.entity.OrderItemEntity;
-import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 /**
  * @author : luqing
  * @date : 2018/4/26 14:31
