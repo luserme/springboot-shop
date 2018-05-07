@@ -5,13 +5,13 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import java.util.concurrent.TimeUnit;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author : luqing
  * @date : 2018/4/19 16:57
  */
-@Log4j
+@Slf4j
 public class TokenCache {
 
     public static final String TOKEN_PREFIX = "token_";

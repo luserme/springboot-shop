@@ -3,13 +3,13 @@ package com.lq.shop.common.util;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author : luqing
  * @date : 2018/4/19 11:11
  */
-@Log4j
+@Slf4j
 public class PropertiesUtil {
 
     private static Properties props;

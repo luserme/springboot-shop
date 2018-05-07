@@ -1,14 +1,14 @@
 package com.lq.shop.common.util;
 
 import java.security.MessageDigest;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 
 /** 密码md5加密工具
  * @author : luqing
  * @date : 2018/4/19 11:09
  */
 
-@Log4j
+@Slf4j
 public class MD5Util {
 
     private static String byteArrayToHexString(byte[] b) {
