@@ -3,14 +3,12 @@ package com.lq.shop.service.impl;
 import com.google.common.collect.Lists;
 import com.lq.shop.common.util.FtpUtil;
 import com.lq.shop.service.IFileService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author luqing
@@ -18,9 +16,9 @@ import java.util.UUID;
  */
 
 @Service("iFileService")
+@Slf4j
 public class FileServiceImpl implements IFileService {
 
-    private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
 
     @Override
     public String upload(MultipartFile file, String path){
@@ -29,17 +27,17 @@ public class FileServiceImpl implements IFileService {
         //abc.jpg
         String fileExtensionName = fileName.substring(fileName.lastIndexOf(".")+1);
         String uploadFileName = UUID.randomUUID().toString()+"."+fileExtensionName;
-        logger.info("开始上传文件,上传文件的文件名:{},上传的路径:{},新文件名:{}",fileName,path,uploadFileName);
+        log.info("开始上传文件,上传文件的文件名:{},上传的路径:{},新文件名:{}",fileName,path,uploadFileName);
 
         File fileDir = new File(path);
         if(!fileDir.exists()){
             boolean b = fileDir.setWritable(true);
             if (b){
-                logger.info("创建所有前缀文件夹成功");
+                log.info("创建所有前缀文件夹成功");
             }
             boolean mkdirs = fileDir.mkdirs();
             if (mkdirs){
-                logger.info("创建文件夹成功");
+                log.info("创建文件夹成功");
             }
         }
         File targetFile = new File(path,uploadFileName);
@@ -54,15 +52,15 @@ public class FileServiceImpl implements IFileService {
             if (isUploadSuccess){
                 boolean delete = targetFile.delete();
                 if (delete){
-                logger.info("上传成功");
+                log.info("上传成功");
                 }
             }else {
-                logger.error("上传失败");
+                log.error("上传失败");
                 return null;
             }
 
         } catch (IOException e) {
-            logger.error("上传文件异常",e);
+            log.error("上传文件异常",e);
             return null;
         }
 

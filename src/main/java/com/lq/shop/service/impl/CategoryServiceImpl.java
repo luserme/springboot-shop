@@ -8,9 +8,8 @@ import com.lq.shop.dao.CategoryRepository;
 import com.lq.shop.entity.CategoryEntity;
 import com.lq.shop.service.ICategoryService;
 import java.util.List;
-import java.util.Locale.Category;
 import java.util.Set;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +20,7 @@ import org.springframework.util.CollectionUtils;
  * @date : 2018/4/20 15:55
  */
 @Service("iCategoryService")
-@Log4j
+@Slf4j
 public class CategoryServiceImpl implements ICategoryService{
 
     private CategoryRepository categoryRepository;
