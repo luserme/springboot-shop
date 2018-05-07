@@ -6,12 +6,10 @@ import com.lq.shop.common.response.ResultCode;
 import com.lq.shop.common.response.ServerResult;
 import com.lq.shop.entity.UserEntity;
 import com.lq.shop.service.IOrderService;
-import com.sun.javafx.iio.ios.IosDescriptor;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import lombok.extern.log4j.Log4j;
-import org.apache.catalina.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/order")
 @RestController
-@Log4j
+@Slf4j
 public class OrderController {
 
     private IOrderService iOrderService;
