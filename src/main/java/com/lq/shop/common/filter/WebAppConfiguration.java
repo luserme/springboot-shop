@@ -41,6 +41,7 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter{
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/login")
                 .excludePathPatterns("/user/logout")
+                .excludePathPatterns("/user/forget/**")
                 .excludePathPatterns("/manage/user/login")
                 .excludePathPatterns("/product/**")
                 .excludePathPatterns("/manage/**");

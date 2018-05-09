@@ -12,8 +12,11 @@ import com.lq.shop.dao.UserRepository;
 import com.lq.shop.entity.UserEntity;
 import com.lq.shop.service.IUserService;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,9 +31,16 @@ public class UserServiceImpl implements IUserService {
 
     private UserRepository userRepository;
 
+    private StringRedisTemplate stringRedisTemplate;
+
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @Autowired
+    public void setStringRedisTemplate(StringRedisTemplate stringRedisTemplate) {
+        this.stringRedisTemplate = stringRedisTemplate;
     }
 
     @Override
@@ -123,7 +133,9 @@ public class UserServiceImpl implements IUserService {
         if (resultCount > 0) {
             //用户名 问题 答案匹配
             String forgetToken = UUID.randomUUID().toString();
-            TokenCache.setKey(TokenCache.TOKEN_PREFIX + username, forgetToken);
+            stringRedisTemplate.opsForValue().set(TokenCache.TOKEN_PREFIX + username, forgetToken);
+            stringRedisTemplate.expire(TokenCache.TOKEN_PREFIX + username, 30,TimeUnit.MINUTES);
+//            TokenCache.setKey(TokenCache.TOKEN_PREFIX + username, forgetToken);
             return ServerResult.createBySuccess(forgetToken);
         }
 
@@ -144,7 +156,8 @@ public class UserServiceImpl implements IUserService {
             return ServerResult.createByErrorMessage("用户不存在");
         }
 
-        String token = TokenCache.getKey(TokenCache.TOKEN_PREFIX + username);
+//        String token = TokenCache.getKey(TokenCache.TOKEN_PREFIX + username);
+        String token = stringRedisTemplate.opsForValue().get(TokenCache.TOKEN_PREFIX + username);
         if (StringUtils.isBlank(token)) {
             return ServerResult.createByErrorMessage("token无效或者过期,请重新获取");
         }
@@ -158,6 +171,7 @@ public class UserServiceImpl implements IUserService {
             UserEntity userEntity = userRepository.saveAndFlush(resultUser);
 
             if (userEntity != null) {
+                stringRedisTemplate.expire(TokenCache.TOKEN_PREFIX + username, 0, TimeUnit.SECONDS);
                 return ServerResult.createBySuccess("重置密码成功");
             }
             return ServerResult.createByErrorMessage("重置密码失败,请重试");

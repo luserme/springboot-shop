@@ -55,10 +55,10 @@ public class UserController {
     @RequestMapping(value = "/info",method = RequestMethod.GET)
     public ServerResult getUserInfo(HttpSession session){
         UserEntity userEntity = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        if (userEntity != null){
-            return ServerResult.createBySuccess(userEntity);
-        }
-        return ServerResult.createByErrorMessage("用户未登录，无法获取当前用户信息");
+//        if (userEntity != null){
+        return ServerResult.createBySuccess(userEntity);
+//        }
+//        return ServerResult.createByErrorMessage("用户未登录，无法获取当前用户信息");
     }
 
     @RequestMapping(value = "/forget/question",method = RequestMethod.GET)
@@ -79,9 +79,9 @@ public class UserController {
     @RequestMapping(value = "/update/info" , method = RequestMethod.PUT)
     public ServerResult updateUserInfo(HttpSession session,UserEntity userEntity){
         UserEntity currentUser = (UserEntity) session.getAttribute(Const.CURRENT_USER);
-        if (currentUser == null){
-            return ServerResult.createByErrorMessage("用户未登录");
-        }
+//        if (currentUser == null){
+//            return ServerResult.createByErrorMessage("用户未登录");
+//        }
 
         userEntity.setId(currentUser.getId());
         userEntity.setUsername(currentUser.getUsername());
