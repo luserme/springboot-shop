@@ -66,6 +66,11 @@ public class UserController {
         return iUserService.selectQuestion(username);
     }
 
+    @RequestMapping(value = "/forget/email",method = RequestMethod.GET)
+    public ServerResult getForgetEmail(String username){
+        return iUserService.sendTokenToEmail(username);
+    }
+
     @RequestMapping(value = "/forget/check/answer",method = RequestMethod.POST)
     public ServerResult getForgetCheckAnswer(String username,String question,String answer){
         return iUserService.checkAnswer(username,question,answer);

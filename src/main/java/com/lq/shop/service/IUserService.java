@@ -54,6 +54,13 @@ public interface IUserService {
     ServerResult checkAnswer(String username, String question, String answer);
 
     /**
+     * 将校验码发送至用户邮箱
+     * @param username 用户名
+     * @return 发送结果
+     */
+    ServerResult sendTokenToEmail(String username);
+
+    /**
      * 重置密码
      * @param username    用户名
      * @param passwordNew 新密码

@@ -17,6 +17,8 @@ public class Const {
     public static final String EMAIL = "email";
     public static final String USERNAME = "username";
 
+    public static final Integer CHECK_CODE_LENGTH=6;
+
     @Getter
     @AllArgsConstructor
     public enum PayPlayFromEnum {

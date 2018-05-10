@@ -6,13 +6,18 @@ import com.lq.shop.common.response.ResultCode;
 import com.lq.shop.common.response.ServerResult;
 import com.lq.shop.common.response.TokenCache;
 import com.lq.shop.common.util.BeanPropertiesUtil;
+import com.lq.shop.common.util.CheckCodeUtil;
 import com.lq.shop.common.util.MD5Util;
 import com.lq.shop.common.util.StringUtils;
 import com.lq.shop.dao.UserRepository;
 import com.lq.shop.entity.UserEntity;
+import com.lq.shop.service.IEmailService;
 import com.lq.shop.service.IUserService;
+
+import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +36,18 @@ public class UserServiceImpl implements IUserService {
 
     private UserRepository userRepository;
 
+    private IEmailService iEmailService;
+
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @Autowired
+    public void setIEmailService(IEmailService iEmailService) {
+        this.iEmailService = iEmailService;
     }
 
     @Autowired
@@ -140,6 +152,28 @@ public class UserServiceImpl implements IUserService {
         }
 
         return ServerResult.createByErrorMessage("答案错误");
+    }
+
+    @Override
+    public ServerResult sendTokenToEmail(String username) {
+
+        UserEntity user = userRepository.findByUsername(username);
+        if (user == null || StringUtils.isEmpty(user.getEmail())){
+            return ServerResult.createByErrorMessage("用户不存在或邮箱错误");
+        }
+
+        String forgetToken = CheckCodeUtil.createCheckCode(Const.CHECK_CODE_LENGTH);
+
+        ServerResult result = iEmailService.sendSimpleMail("luserme@163.com", forgetToken);
+
+        if (!result.isSuccess()){
+            return result;
+        }
+
+        stringRedisTemplate.opsForValue().set(TokenCache.TOKEN_PREFIX + username, forgetToken);
+        stringRedisTemplate.expire(TokenCache.TOKEN_PREFIX + username, 30,TimeUnit.MINUTES);
+
+        return result;
     }
 
     @Override
