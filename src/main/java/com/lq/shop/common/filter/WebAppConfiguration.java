@@ -44,6 +44,7 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter{
                 .excludePathPatterns("/user/forget/**")
                 .excludePathPatterns("/manage/user/login")
                 .excludePathPatterns("/product/**")
+                .excludePathPatterns("/order/alipay/callback")
                 .excludePathPatterns("/manage/**");
 
         //拦截需要管理员
