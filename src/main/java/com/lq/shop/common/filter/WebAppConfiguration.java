@@ -41,6 +41,7 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter{
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/login")
                 .excludePathPatterns("/user/logout")
+                .excludePathPatterns("/user/register")
                 .excludePathPatterns("/user/forget/**")
                 .excludePathPatterns("/manage/user/login")
                 .excludePathPatterns("/product/**")
@@ -49,7 +50,8 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter{
 
         //拦截需要管理员
         registry.addInterceptor(needAdminInterceptor)
-                .addPathPatterns("/manage/**");
+                .addPathPatterns("/manage/**")
+                .excludePathPatterns("/manage/user/login");
 
     }
 }
