@@ -236,6 +236,7 @@ public class ProductServiceImpl implements IProductService{
 
         ProductDetailVo productDetailVo = new ProductDetailVo();
         productDetailVo.setId(productEntity.getId());
+        productDetailVo.setName(productEntity.getName());
         productDetailVo.setSubtitle(productEntity.getSubtitle());
         productDetailVo.setPrice(productEntity.getPrice());
         productDetailVo.setMainImage(productEntity.getMainImage());
